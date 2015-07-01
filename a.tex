@@ -1,0 +1,16 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=30pt,bottom=30pt,left=48pt,right=46pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[backend=biber]{biblatex}
+
+\bibliography{bjorn}     % <-- here's the bibliography file name (*.bib) 
+
+\begin{document}
+%\bibliographystyle{asaetr} % <-- your favorite BibTeX style (*.bst)
+
+\nocite{*}                 % <-- Here's the "trick"
+
+\printbibliography
+
+\end{document}            
