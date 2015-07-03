@@ -12,6 +12,7 @@ publication list http://www.imr.no/~bjorn/publications.html
 
 
 Usage::
+
     bib2html.py <bibtex-file> [<html-file>]
     bib2html.py (-h | --help)
 
