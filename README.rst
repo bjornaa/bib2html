@@ -8,7 +8,7 @@ The intended use is to produce a web page of peer-reviewed articles for
 a group of authors. It can produce links to the journal web sites and
 also pdfs to the articles themselves. The group of authors can be
 highlited among their coauthors. For a simple example see, my own
-publication list http://www.imr.no/~bjorn/p...
+publication list http://www.imr.no/~bjorn/publications.html
 
 
 Usage::
@@ -44,10 +44,10 @@ Extensions
 ----------
 
 The text should be ASCII or utf-8. If utf-8, latex may need
-\usepackage[utf8]{inputenc} in the pre-amble (sjekk)
+\usepackage[utf8]{inputenc} in the preamble.
 
 In the author field, the LaTeX convention for scandinavian characters
-{\AE}, {\O}, {\AA}, {\ae}, {\o}, {\aa} are allowed. More such
+{\\AE}, {\\O}, {\\AA}, {\\ae}, {\\o}, {\\aa} are allowed. More such
 combined characters may be easily added.
 
 For the input to be handled correctly by bibtex, the title field
@@ -86,4 +86,4 @@ Outside python standard library, the docopt package is requiered.
 The script is in a single python source file, which can be deployed
 where needed. TODO: make in installable by pip.
 
-The script is made openly available under the ... license.
+The script is made openly available under the MIT license.
