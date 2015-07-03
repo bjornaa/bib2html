@@ -78,7 +78,7 @@ def main():
     if html_file is None:
         html_file = bibtex_file.replace('.bib', '.html')
 
-    # --- Init read loop ---
+    # --- Init conversion loop ---
 
     try:
         fid0 = codecs.open(bibtex_file, encoding='utf-8')
@@ -220,7 +220,7 @@ class Article(object):
             # Not start of field, not continuation,
             # must be a single end brace, ending the article entry
             else:
-                assert (words == ['}'],
+                assert words == ['}'], (
                         "Article should end with a single end brace")
 
     def write_html(self, fid):
@@ -312,8 +312,8 @@ class Article(object):
                 fid.write('link')
                 fid.write('</a>')
 
-        # Closing bracket
-        fid.write(nbsp + ']\n')
+            # Closing bracket
+            fid.write(nbsp + ']\n')
 
         # End item
         fid.write('</li>\n')
@@ -393,7 +393,6 @@ header = u'''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
 </head>
 
 <body>
-
 
 '''
 
