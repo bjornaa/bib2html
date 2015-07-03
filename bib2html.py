@@ -178,13 +178,15 @@ class Article(object):
             # Read a field in an entry
             if len(words) > 1 and words[1] == '=':  # New entry
                 assert words[1] == '=', "Expting a field in an entry"
-                keyword = words[0]
+                keyword = words[0].lower()
                 self.fields.append(keyword)
                 data = words[2:]
                 # Add continuation lines
                 # Require trailing commas after all fields (also last)
-                while not ((data[-1][-2:] in ['",', '},']) or
-                           (len(data) == 1 and data[0][-1] == ',')):
+                while (data == [] or            # new line after =
+                    (not ((data[-1][-2:] in ['",', '},']) or
+                         (len(data) == 1 and data[0][-1] == ',') or
+                         (data[-1] == '}')))):  # final '}'
                     data.extend(lines.next().split())
                 field = " ".join(data)   # Make a single string
 
