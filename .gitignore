@@ -1,3 +1,10 @@
 *~
 *.pyc
 *.html
+*.pdf
+*.aux
+*.run.xml
+*.log
+*.blg
+*.bbl
+
