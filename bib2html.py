@@ -167,7 +167,7 @@ class Article(object):
         lines = iter(entry.lines)
 
         # First line must be @article{key
-        line = lines.next()
+        line = next(lines)
         words = line.split()
         self.key = words[0][9:-1]
         self.fields = []
@@ -182,12 +182,11 @@ class Article(object):
                 self.fields.append(keyword)
                 data = words[2:]
                 # Add continuation lines
-                # Require trailing commas after all fields (also last)
                 while (data == [] or            # new line after =
-                    (not ((data[-1][-2:] in ['",', '},']) or
-                         (len(data) == 1 and data[0][-1] == ',') or
-                         (data[-1] == '}')))):  # final '}'
-                    data.extend(lines.next().split())
+                       (not ((data[-1][-2:] in ['",', '},']) or
+                             (len(data) == 1 and data[0][-1] == ',') or
+                             (data[-1] == '}')))):  # final '}'
+                    data.extend(next(lines).split())
                 field = " ".join(data)   # Make a single string
 
                 # Remove initial delimiter
@@ -200,7 +199,7 @@ class Article(object):
                     field = field[:-1]
 
                 # Clean the entry
-                if keyword == "author":
+                if keyword in ["author", "star_author"]:
                     field = field.split(' and ')
                     for i, auth in enumerate(field):
                         field[i] = auth.replace(' ', nbsp)
@@ -213,8 +212,7 @@ class Article(object):
                     field = field.replace(r'\&', '&')
                 elif keyword == "pages":
                     field = field.replace('-', en_dash)
-                elif keyword == "star_author":
-                    field = field.split(' and ')
+                    
 
                 # Set the field-attribute
                 setattr(self, keyword, field)
